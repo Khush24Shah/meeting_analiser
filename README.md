@@ -21,4 +21,4 @@ Meeting Analyzer is a tool that allows you to analyze the sentiment transcriptio
 
 ## Demo
 
-https://github.com/user-attachments/assets/c81eaef9-d225-4ee1-9492-ce5f26eaf933
+https://github.com/user-attachments/assets/10501faa-37d2-4cee-a4dc-1ece1baae7a9
