@@ -1,6 +1,6 @@
 # Meeting Analyzer
 
-The Meeting Analyzer is a tool that allows you to analyze the sentiment transcription, minutes, and productivity of your meetings.
+Meeting Analyzer is a tool that allows you to analyze the sentiment transcription, minutes, and productivity of your meetings.
 
 ## Prerequisites
 
