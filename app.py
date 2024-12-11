@@ -130,7 +130,7 @@ if audio_file:
     # Step 4: Generate meeting minutes
     st.subheader("Meeting Minutes:")
 
-    with st.spinner('Wait for it...'):
+    with st.spinner('Preparing Summary...'):
         message = "Give point-wise minutes of the meeting from this text:\n\n" + transcription
 
         final_note: ChatResponse = chat(model="mistral", messages=[{"role": "user", "content": message}])
