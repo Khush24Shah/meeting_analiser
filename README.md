@@ -10,8 +10,8 @@ Meeting Analyzer is a tool that allows you to analyze the sentiment transcriptio
 
 ## Usage
 
-1. Run `streamlit run app.py` in the terminal.
-2. Upload the meeting audio file. (Two sample audio files are provided in the `audio` folder.)
+1. Run `streamlit run app.py` in the terminal. We use [Streamlit](https://streamlit.io/) for UI.
+2. Upload the meeting audio file. (Two sample audio files are provided in [audio](https://github.com/Khush24Shah/meeting_analyser/tree/main/audio).)
 3. The tool will ask for segment duration in seconds.
 4. The tool will generate the transcription for each segment.
 5. The point-wise summary of the meeting will be displayed.
