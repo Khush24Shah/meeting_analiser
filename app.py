@@ -113,7 +113,7 @@ if audio_file:
     split_dir = split_audio(preprocessed_file, segment_duration=seg_dur)
 
     # Step 3: Perform speech-to-text conversion
-    st.subheader("Transcription:")
+    st.header("Transcription:")
     transcription_ls = []
     audio_ls = sorted(os.listdir(split_dir))
     l = len(audio_ls)
@@ -128,7 +128,7 @@ if audio_file:
     st.text_area("", transcription, height=300)
 
     # Step 4: Generate meeting minutes
-    st.subheader("Meeting Minutes:")
+    st.header("Meeting Minutes:")
 
     with st.spinner('Preparing Summary...'):
         message = "Give point-wise minutes of the meeting from this text:\n\n" + transcription
@@ -137,15 +137,23 @@ if audio_file:
     st.text_area("", final_note.message.content, height=300)
 
     # Step 5: Sentiment analysis
-    sentiment = sentiment_analysis(transcription)
-    st.subheader("Sentiment Analysis:")
+    st.header("Sentiment Analysis:")
+    with st.spinner('Evaluating Overall Sentiment...'):
+        sentiment = sentiment_analysis(transcription)
+    
     st.write(f"Overall Meeting Sentiment: {sentiment}")
 
-    sentiment_per_segment = [f"Sentiment for Segment#{count}: {sentiment_analysis(segment)}\n" for count, segment in enumerate(transcription_ls, 1)]
+    sentiment_per_segment = []
+    progress_bar = st.progress(0, text="")
+    for count, segment in enumerate(transcription_ls, 1):
+        progress_bar.progress(count/l, text=f"Analyzing sentiment for segment #{count}...")
+        sentiment_per_segment.append(f"Sentiment for Segment#{count}: {sentiment_analysis(segment)}")
+
+    progress_bar.empty()
     st.write("\n".join(sentiment_per_segment))
 
     # Step 6: Evaluate productivity
-    st.subheader("Productivity:")
+    st.header("Productivity:")
     productivity_keywords = st.text_input("Enter productivity keywords separated by commas", "decision, transcribe, program, task, action, plan, solution, agenda, discuss")
     productivity_keywords = productivity_keywords.split(", ")
     if productivity_keywords:
