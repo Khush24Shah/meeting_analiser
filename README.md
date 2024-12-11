@@ -4,9 +4,10 @@ Meeting Analyzer is a tool that allows you to analyze the sentiment transcriptio
 
 ## Prerequisites
 
-- [Ollama](https://ollama.com/download) must be installed and running. If Ollama is closed, the minutes of the meeting will fail to generate and hence the application will not work.
+- [Ollama](https://ollama.com/download) must be installed and running. If it is closed, the minutes of the meeting will fail to generate and hence the application will not work.
 - Run `ollama pull mistral` in the terminal to use the Mistral model.
 - Run `pip install -r requirements.txt` to install the required packages.
+- The device running the tool must be connected to the internet.
 
 ## Usage
 
