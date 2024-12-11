@@ -40,6 +40,9 @@ def split_audio(file_name, segment_duration, output_dir="out"):
     
     if not os.path.exists(split_dir):
         os.makedirs(split_dir)
+    else:
+        for file in os.listdir(split_dir):
+            os.remove(os.path.join(split_dir, file))
 
     while samples_written < samples_total:
         buffer = min(samples_total - samples_written, buffer)
@@ -147,7 +150,7 @@ if audio_file:
     progress_bar = st.progress(0, text="")
     for count, segment in enumerate(transcription_ls, 1):
         progress_bar.progress(count/l, text=f"Analyzing sentiment for segment #{count}...")
-        sentiment_per_segment.append(f"Sentiment for Segment#{count}: {sentiment_analysis(segment)}")
+        sentiment_per_segment.append(f"Sentiment for Segment#{count}: {sentiment_analysis(segment)}\n")
 
     progress_bar.empty()
     st.write("\n".join(sentiment_per_segment))
