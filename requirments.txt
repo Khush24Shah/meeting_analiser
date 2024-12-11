@@ -1,0 +1,12 @@
+streamlit
+numpy
+librosa
+soundfile
+ffmpeg-python
+scipy
+torch
+transformers
+nltk
+langchain_community
+ollama
+python
