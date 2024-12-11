@@ -113,28 +113,28 @@ if audio_file:
     split_dir = split_audio(preprocessed_file, segment_duration=seg_dur)
 
     # Step 3: Perform speech-to-text conversion
+    st.subheader("Transcription:")
     transcription_ls = []
     audio_ls = sorted(os.listdir(split_dir))
-    for audio in audio_ls:
+    l = len(audio_ls)
+    progress_bar = st.progress(0, text="")
+    for count, audio in enumerate(audio_ls, 1):
+        progress_bar.progress(count/l, text=f"Transcribing audio for segment #{count}...")
         result = pipe(os.path.join(split_dir, audio))
         transcription_ls.append(result["text"])
 
     transcription = "\n\n".join(transcription_ls)
-    st.subheader("Transcription:")
-    st.text_area("Transcription", transcription, height=300)
+    progress_bar.empty()
+    st.text_area("", transcription, height=300)
 
     # Step 4: Generate meeting minutes
-    message = "Give point-wise minutes of the meeting from this text:\n\n" + transcription
+    st.subheader("Meeting Minutes:")
 
-    final_note: ChatResponse = chat(model="mistral", messages=[{"role": "user", "content": message}])
-    st.subheader("Meeting Minutes 1:")
-    st.text_area("Minutes", final_note.message.content, height=300)
+    with st.spinner('Wait for it...'):
+        message = "Give point-wise minutes of the meeting from this text:\n\n" + transcription
 
-    # Step 4: Generate meeting minutes
-    llm = Ollama(model="mistral")
-    final_note = llm.invoke(f"Give point-wise minutes of the meeting from this text: {transcription}")
-    st.subheader("Meeting Minutes 2:")
-    st.text_area("Minutes", final_note, height=300)
+        final_note: ChatResponse = chat(model="mistral", messages=[{"role": "user", "content": message}])
+    st.text_area("", final_note.message.content, height=300)
 
     # Step 5: Sentiment analysis
     sentiment = sentiment_analysis(transcription)
