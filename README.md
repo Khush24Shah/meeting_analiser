@@ -4,7 +4,7 @@ The Meeting Analyzer is a tool that allows you to analyze the sentiment transcri
 
 ## Prerequisites
 
-- Ollama[https://ollama.com/download] must be installed and running.
+- [Ollama](https://ollama.com/download) must be installed and running.
 - Run `ollama pull mistral` in the terminal to use the Mistral model.
 - Run `pip install -r requirements.txt` to install the required packages.
 
