@@ -1,3 +1,5 @@
+# Link to the repository: https://github.com/Khush24Shah/meeting_analyser
+
 import streamlit as st
 import librosa
 import soundfile as sf

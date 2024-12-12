@@ -1,4 +1,4 @@
-# Meeting Analyzer
+# Meeting Analyzer ([Repository](https://github.com/Khush24Shah/meeting_analyser))
 
 Meeting Analyzer is a tool that allows you to analyze the sentiment transcription, minutes, and productivity of your meetings.
 
@@ -22,3 +22,4 @@ Meeting Analyzer is a tool that allows you to analyze the sentiment transcriptio
 ## Demo
 
 https://github.com/user-attachments/assets/10501faa-37d2-4cee-a4dc-1ece1baae7a9
+
