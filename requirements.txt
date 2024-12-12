@@ -9,4 +9,4 @@ transformers
 nltk
 langchain_community
 ollama
-python=3.12
+python==3.12
